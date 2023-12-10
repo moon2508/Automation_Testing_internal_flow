@@ -1,5 +1,9 @@
 describe('Create a order', () => {
-  it('passes', () => {
+  beforeEach(()=>
+  {
     cy.visit('https://example.cypress.io')
+  })
+  it('create a order', () => {
+    
   })
 })
