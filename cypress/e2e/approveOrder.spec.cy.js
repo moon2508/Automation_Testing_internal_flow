@@ -9,7 +9,7 @@ describe('Create a order', () => {
        cy.get('.btn-success').click();
        cy.wait(300);
     })
-    it.skip('Approving a order', () => {
+    it('Approving a order', () => {
       //click list order
     cy.get('.app-sidebar__heading').contains('Mua/Bán hàng hoá Viễn thông');
     cy.get('li:contains("Quản lý Đơn hàng")').click()
@@ -31,7 +31,7 @@ describe('Create a order', () => {
 
 
     });
-    it.skip('Rejecting a order', () => {
+    it('Rejecting a order', () => {
         //click list order
       cy.get('.app-sidebar__heading').contains('Mua/Bán hàng hoá Viễn thông');
       cy.get('li:contains("Quản lý Đơn hàng")').click()

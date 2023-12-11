@@ -25,7 +25,7 @@ describe('Create a order', () => {
      cy.get('.btn-success').click();
      cy.wait(300);
   })
-  it.skip('create a order', () => {
+  it('create a order', () => {
     //click list order
     
     cy.get('.app-sidebar__heading').contains('Mua/Bán hàng hoá Viễn thông');
