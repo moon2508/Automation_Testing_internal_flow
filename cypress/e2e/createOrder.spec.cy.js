@@ -9,5 +9,6 @@ describe('Create a order', () => {
     cy.get('#exampleInputPassword1').type('123456');
     cy.get('.btn-success').click();
     
+    
   })
 })
