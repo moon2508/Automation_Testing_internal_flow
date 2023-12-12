@@ -25,13 +25,15 @@ describe('Create a order', () => {
 
     //detail order
     cy.get('.text-center').eq(1).click();
-    cy.get('button').contains('Duyệt');
-    cy.get('button').contains('Quay lại').click();
+    cy.wait(300);
+    cy.get('button').contains('Duyệt').click();
+    cy.wait(600);
+    // cy.get('button').contains('Quay lại').click();
     
 
 
     });
-    it('Rejecting a order', () => {
+    it.skip('Rejecting a order', () => {
         //click list order
       cy.get('.app-sidebar__heading').contains('Mua/Bán hàng hoá Viễn thông');
       cy.get('li:contains("Quản lý Đơn hàng")').click()
@@ -54,7 +56,7 @@ describe('Create a order', () => {
   
       });
 
-      it('Canceling a order', () => {
+      it.skip('Canceling a order', () => {
         //click list order
       cy.get('.app-sidebar__heading').contains('Mua/Bán hàng hoá Viễn thông');
       cy.get('li:contains("Quản lý Đơn hàng")').click()

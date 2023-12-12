@@ -47,15 +47,15 @@ describe('Create a order', () => {
         .then(($price) => {
           if ($price.text().includes("10,000")) 
           {
-            cy.get('.quantity-' + index).type('2');
+            cy.get('.quantity-' + index).click().type('2');
 
           } else if ($price.text().includes("20,000"))
           {
-            cy.get('.quantity-' + index).type('2');
+            cy.get('.quantity-' + index).click().type('2');
           }
           else if ($price.text().includes("50,000"))
           {
-            cy.get('.quantity-' + index).type('2');
+            cy.get('.quantity-' + index).click().type('2');
           }
           else 
           {
