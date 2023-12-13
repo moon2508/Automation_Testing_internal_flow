@@ -18,6 +18,7 @@
   "homepage": "https://github.com/moon2508/Automation_Testing_internal_flow#readme",
   "dependencies": {
     "cypress": "^13.6.1",
-    "faker": "^6.6.6"
+    "faker": "^6.6.6",
+    "xlsx": "^0.18.5"
   }
 }

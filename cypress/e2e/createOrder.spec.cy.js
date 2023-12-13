@@ -24,16 +24,18 @@ describe('Create a order', () => {
      cy.get('#exampleInputPassword1').type('123456');
      cy.get('.btn-success').click();
      cy.wait(300);
+     //click list order
+    
+     cy.get('.app-sidebar__heading').contains('Mua/Bán hàng hoá Viễn thông');
+     cy.get('li:contains("Quản lý Đơn hàng")').click()
+     .children('ul.mm-collapse')
+     .invoke('css', 'display', 'block')
+     .find('a:contains("Danh sách")')
+     .click();
   })
   it('create a order', () => {
-    //click list order
     
-    cy.get('.app-sidebar__heading').contains('Mua/Bán hàng hoá Viễn thông');
-    cy.get('li:contains("Quản lý Đơn hàng")').click()
-    .children('ul.mm-collapse')
-    .invoke('css', 'display', 'block')
-    .find('a:contains("Danh sách")')
-    .click();
+   
   
     //click button ADD
     cy.get('button').contains('Thêm mới').click();

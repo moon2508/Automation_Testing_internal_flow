@@ -25,7 +25,7 @@ describe('Approve a audit order', () => {
     
         //detail order
         cy.get('td.text-center a').eq(1).invoke('text').then((text) => {
-          cy.log('Tạo đơn điều chỉnh với mã đơn ' + text );
+          cy.log('Duyệt đơn điều chỉnh với mã đơn ' + text );
         });;
         cy.get('.text-center').eq(1).click();
         cy.get('button').contains('Duyệt điều chỉnh')
