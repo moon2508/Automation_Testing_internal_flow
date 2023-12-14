@@ -47,16 +47,80 @@ describe('Check data detail order screen', () => {
 
     cy.get('.col-md-3.px-4.pdr-menu b').eq(0).invoke('text').then((text) => {
       orderCode = text.trim();
-      cy.log('Mã đơn hàng :' + orderCode);
+      cy.log(orderCode);
     });
 
     cy.get('.col-md-3.px-4.pdr-menu').eq(1).invoke('text').then((text) => {
       audit_status = text.trim();
-      cy.log('Trạng thái điều chỉnh đơn hàng :' + audit_status);
+      cy.log(audit_status);
     });
 
     cy.get('.col-md-12.mt-2.px-4 b').eq(0).invoke('text').then((text) => {
       order_code_detail = text.trim();
       cy.log('Đơn hàng chi tiết :' + order_code_detail);
     });
-    
+    // Lưu trữ dữ liệu từ bảng thông tin
+    const product_row = [];
+
+    // Lấy số hàng của bảng
+    cy.get('table.table-bordered').eq(0).find('th').then(($rows) => {
+      const rowCount = $rows.length;
+      cy.log(rowCount);
+
+      // Lặp qua từng hàng trong bảng
+      for (let i = 0; i < rowCount - 1; i++) {
+        const rowData = {};
+
+        // Lấy các ô trong hàng hiện tại
+        cy.get(`table tbody tr:eq(${i}) td`).invoke('text').as('product_row_' + i).then((text) => {
+          let rowData = text.trim();
+          //   cy.log( product_row);
+          //   cy.log( text);
+          // });
+
+          cy.wrap(product_row).then((array) => {
+            // Thêm dữ liệu vào mảng product_row
+            array.push(rowData);
+
+            // Hiển thị dữ liệu của hàng trong log
+            cy.log('Product Row:', rowData);
+          })
+
+            .then(() => {
+              // Hiển thị dữ liệu trong mảng productData
+              cy.log('Product Data:', rowData);
+            });
+          //   .each(($cell, cellIndex) => {
+          //     // Lấy tên cột từ tiêu đề bảng
+          //     // wrap thành 1 row
+          //     cy.wrap($cell).get('table tbody tr td').eq(cellIndex).then(($header) => {
+          //       const columnName = $header.text().trim();
+          //       const cellValue = $cell.text().trim();
+          //       cy.log(cellValue, columnName);
+
+          //       // Lưu trữ dữ liệu vào đối tượng rowData
+          //       rowData[columnName] = cellValue;
+          //     });
+          //   })
+          //   .then(() => {
+          //     // Lưu trữ dữ liệu hàng vào mảng tableData
+          //     tableData.push(rowData);
+          //   });
+        })
+      }
+
+      });
+         
+})
+})
+
+
+  // .then(() => {
+  //   // Sử dụng dữ liệu từ bảng thông tin
+  //   // Ví dụ: Hiển thị dữ liệu trong console
+  //   console.log('Table Data:', tableData);
+
+  // Thực hiện các thao tác khác với dữ liệu
+  // Ví dụ: Tìm kiếm, sắp xếp, phân tích, v.v.
+  // });
+
