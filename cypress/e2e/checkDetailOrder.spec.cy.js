@@ -74,43 +74,44 @@ describe('Check data detail order screen', () => {
         // Lấy các ô trong hàng hiện tại
         cy.get(`table tbody tr:eq(${i}) td`).invoke('text').as('product_row_' + i).then((text) => {
           let rowData = text.trim();
-          //   cy.log( product_row);
-          //   cy.log( text);
-          // });
+            cy.log( product_row);
+            cy.log( text);
+          });
+        }
+        const inputString = "3Viettel 50.000 50,0002Thẻ50,000100,000397,000";
 
-          cy.wrap(product_row).then((array) => {
-            // Thêm dữ liệu vào mảng product_row
-            array.push(rowData);
-
-            // Hiển thị dữ liệu của hàng trong log
-            cy.log('Product Row:', rowData);
-          })
-
-            .then(() => {
-              // Hiển thị dữ liệu trong mảng productData
-              cy.log('Product Data:', rowData);
-            });
-          //   .each(($cell, cellIndex) => {
-          //     // Lấy tên cột từ tiêu đề bảng
-          //     // wrap thành 1 row
-          //     cy.wrap($cell).get('table tbody tr td').eq(cellIndex).then(($header) => {
-          //       const columnName = $header.text().trim();
-          //       const cellValue = $cell.text().trim();
-          //       cy.log(cellValue, columnName);
-
-          //       // Lưu trữ dữ liệu vào đối tượng rowData
-          //       rowData[columnName] = cellValue;
-          //     });
-          //   })
-          //   .then(() => {
-          //     // Lưu trữ dữ liệu hàng vào mảng tableData
-          //     tableData.push(rowData);
-          //   });
-        })
-      }
-
-      });
+        // Define a regular expression pattern to match the desired data
+        const pattern = /(\d+)([A-Za-z\s]+)(\d+\.\d+)\s(\d+,\d+)/g;
+        
+        // Initialize an array to store the extracted data
+        const extractedData = [];
+        
+        // Execute the regular expression pattern on the input string
+        let match;
+        while ((match = pattern.exec(inputString)) !== null) {
+          const quantity = match[1];
+          const name = match[2].trim();
+          const price = parseFloat(match[3].replace('.', '').replace(',', '.'));
+          const total = parseFloat(match[4].replace(',', ''));
+        
+          // Create an object with the extracted data
+          const rowData = {
+            quantity,
+            name,
+            price,
+            total,
+          };
+        
+          // Push the rowData object into the extractedData array
+          extractedData.push(rowData);
+        }
+        
+        // Display the extracted data
+        cy.log(extractedData);
+          
          
+
+})
 })
 })
 
