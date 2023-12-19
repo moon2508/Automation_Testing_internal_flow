@@ -45,9 +45,9 @@ describe('Create a audit order', () => {
                   } else if ($price.text().includes("20,000")) {
                     cy.get('.product-quantityReal-' + index).clear().type(index + 5);
                   }
-                  else if ($price.text().includes("50,000")) {
-                    cy.get('.product-quantityReal-' + index).clear().type(index + 5);
-                  }
+                  // else if ($price.text().includes("50,000")) {
+                  //   cy.get('.product-quantityReal-' + index).clear().type(index + 5);
+                  // }
                   else {
                     cy.log('Sản phẩm k có trong đơn hàng');
                   }

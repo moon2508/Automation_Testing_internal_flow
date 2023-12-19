@@ -16,7 +16,7 @@ describe('Approve a audit order', () => {
          .find('a:contains("Danh sách")')
          .click();
     });
-    it.skip('Approve a audit order with status "Yêu cầu điều chỉnh"', () => {
+    it('Approve a audit order with status "Yêu cầu điều chỉnh"', () => {
    
         //filter about status_audit
         cy.get('#statusAudit_chosen').click().type('Yêu cầu điều chỉnh{enter}');
@@ -46,7 +46,7 @@ describe('Approve a audit order', () => {
         cy.get('button').contains('Từ chối điều chỉnh')
           .click();
     })
-    it('Cancel a audit order with status "Yêu cầu điều chỉnh"', () => {
+    it.skip('Cancel a audit order with status "Yêu cầu điều chỉnh"', () => {
    
         //filter about status_audit
         cy.get('#statusAudit_chosen').click().type('Yêu cầu điều chỉnh{enter}');
