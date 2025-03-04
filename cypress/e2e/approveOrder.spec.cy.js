@@ -1,7 +1,8 @@
-describe('Create a order', () => {
+describe('Approve a order', () => {
     beforeEach(()=>
     {
       cy.viewport(1920,1024);
+      // cy.visit('http://192.168.100.56:2022/order-itopup/list-order');
       cy.visit('http://192.168.100.192:1999/');
        //login
        cy.get('#exampleInputEmail1').type('haptdv');
